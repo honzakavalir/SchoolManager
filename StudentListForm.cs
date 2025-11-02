@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolManager.Core.Db;
+using SchoolManager.Core.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,14 +60,7 @@ namespace SchoolManager
 
         private void addStudentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Hide();
-            using (StudentEditForm form = new StudentEditForm())
-            {
-                form.ShowDialog();
-            }
-            Show();
-
-
+            FormHelper.OpenForm<StudentEditForm>(this);
         }
 
         private void closeMenuToolStripMenuItem_Click(object sender, EventArgs e)

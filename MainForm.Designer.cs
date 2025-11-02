@@ -52,6 +52,7 @@
             teachersButton.TabIndex = 1;
             teachersButton.Text = "Učitelé";
             teachersButton.UseVisualStyleBackColor = true;
+            teachersButton.Click += teachersButton_Click;
             // 
             // schoolClassesButton
             // 
