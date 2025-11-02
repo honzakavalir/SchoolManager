@@ -24,7 +24,7 @@ namespace SchoolManager
 
         private void closeMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void LoadStudents()
@@ -64,12 +64,12 @@ namespace SchoolManager
 
         private void addStudentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             using (StudentEditForm form = new StudentEditForm())
             {
                 form.ShowDialog();
             }
-            this.Show();
+            Show();
 
 
         }

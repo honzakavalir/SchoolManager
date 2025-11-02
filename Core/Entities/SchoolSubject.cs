@@ -8,6 +8,8 @@ namespace SchoolManager.Core.Entities
 {
     public class SchoolSubject
     {
+        public SchoolSubject() {}
+
         public SchoolSubject(string name, string abbr, string? description)
         {
             Name = name;

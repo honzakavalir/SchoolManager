@@ -14,12 +14,12 @@ namespace SchoolManager
 
         private void button_students_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             using (StudentListForm form = new StudentListForm())
             {
                 form.ShowDialog();
             }
-            this.Show();
+            Show();
         }
     }
 }

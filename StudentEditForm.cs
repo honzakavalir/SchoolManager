@@ -24,5 +24,10 @@ namespace SchoolManager
         public void CreateStudent()
         {
         }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

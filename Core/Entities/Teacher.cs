@@ -8,6 +8,8 @@ namespace SchoolManager.Core.Entities
 {
     public class Teacher : Person
     {
+        public Teacher() {}
+
         public Teacher(string firstName, string lastName, DateTime birthDate) : base(firstName, lastName, birthDate) {}
 
         public required string Email { get; set; }

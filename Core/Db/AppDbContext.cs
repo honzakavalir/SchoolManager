@@ -27,6 +27,46 @@ namespace SchoolManager.Core.Db
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            // Ignorování vlastnosti FullName (je jen pro čtení, nezapisuje se do DB)
+            modelBuilder.Entity<Person>()
+                .Ignore(p => p.FullName);
+
+            // Student - SchoolClass (1:N)
+            modelBuilder.Entity<Student>()
+                .HasOne(s => s.SchoolClass)
+                .WithMany(c => c.Students)
+                .HasForeignKey("SchoolClassId")
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // SchoolClass - Teacher (1:N)
+            modelBuilder.Entity<SchoolClass>()
+                .HasOne(c => c.Teacher)
+                .WithMany(t => t.SchoolClasses)
+                .HasForeignKey("TeacherId")
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Teacher - SchoolSubject (M:N)
+            modelBuilder.Entity<Teacher>()
+                .HasMany(t => t.TaughtSubjects)
+                .WithMany(s => s.Teachers)
+                .UsingEntity<Dictionary<string, object>>(
+                    "TeacherSubject",
+                    ts => ts.HasOne<SchoolSubject>()
+                            .WithMany()
+                            .HasForeignKey("SchoolSubjectId")
+                            .OnDelete(DeleteBehavior.Cascade),
+                    ts => ts.HasOne<Teacher>()
+                            .WithMany()
+                            .HasForeignKey("TeacherId")
+                            .OnDelete(DeleteBehavior.Cascade),
+                    ts =>
+                    {
+                        ts.HasKey("TeacherId", "SchoolSubjectId");
+                        ts.ToTable("TeacherSubjects");
+                    });
         }
+
     }
 }

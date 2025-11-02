@@ -81,6 +81,7 @@
             Controls.Add(teachers_button);
             Controls.Add(button_students);
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "SchoolManager";
             ResumeLayout(false);
         }

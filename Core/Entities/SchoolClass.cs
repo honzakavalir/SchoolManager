@@ -8,6 +8,8 @@ namespace SchoolManager.Core.Entities
 {
     public class SchoolClass
     {
+        public SchoolClass() {}
+
         public SchoolClass(string name, Teacher teacher)
         {
             Name = name;

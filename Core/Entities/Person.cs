@@ -8,6 +8,8 @@ namespace SchoolManager.Core.Entities
 {
     public abstract class Person
     {
+        protected Person() {}
+
         protected Person(string firstName, string lastName, DateTime birthDate)
         {
             FirstName = firstName;

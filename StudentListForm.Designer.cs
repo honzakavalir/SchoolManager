@@ -94,6 +94,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "StudentListForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Seznam studentů";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

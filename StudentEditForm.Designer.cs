@@ -103,6 +103,7 @@
             closeButton.TabIndex = 7;
             closeButton.Text = "Zavřít";
             closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
             // 
             // StudentEditForm
             // 
@@ -118,6 +119,7 @@
             Controls.Add(firstNametextBox);
             Controls.Add(firstNameLabel);
             Name = "StudentEditForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Vytvořit studenta";
             ResumeLayout(false);
             PerformLayout();
