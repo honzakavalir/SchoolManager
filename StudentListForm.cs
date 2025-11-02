@@ -22,11 +22,6 @@ namespace SchoolManager
             LoadStudents();
         }
 
-        private void closeMenuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void LoadStudents()
         {
             _dbContext.Students.Load();
@@ -72,6 +67,11 @@ namespace SchoolManager
             Show();
 
 
+        }
+
+        private void closeMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

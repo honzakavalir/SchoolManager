@@ -10,6 +10,7 @@ namespace SchoolManager
         {
             InitializeComponent();
             _dbContext.Database.EnsureCreated();
+            LoadButtonsState();
         }
 
         private void button_students_Click(object sender, EventArgs e)
@@ -20,6 +21,12 @@ namespace SchoolManager
                 form.ShowDialog();
             }
             Show();
+        }
+
+        private void LoadButtonsState()
+        {
+            studentsButton.Enabled = _dbContext.SchoolClasses.Any();
+            schoolClassesButton.Enabled = _dbContext.Teachers.Any();
         }
     }
 }

@@ -28,58 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button_students = new Button();
-            teachers_button = new Button();
-            schoolClasses_button = new Button();
-            schoolSubjects_button = new Button();
+            studentsButton = new Button();
+            teachersButton = new Button();
+            schoolClassesButton = new Button();
+            schoolSubjectsButton = new Button();
             SuspendLayout();
             // 
-            // button_students
+            // studentsButton
             // 
-            button_students.Location = new Point(24, 17);
-            button_students.Name = "button_students";
-            button_students.Size = new Size(118, 45);
-            button_students.TabIndex = 0;
-            button_students.Text = "Studenti";
-            button_students.UseVisualStyleBackColor = true;
-            button_students.Click += button_students_Click;
+            studentsButton.Location = new Point(24, 17);
+            studentsButton.Name = "studentsButton";
+            studentsButton.Size = new Size(118, 45);
+            studentsButton.TabIndex = 0;
+            studentsButton.Text = "Studenti";
+            studentsButton.UseVisualStyleBackColor = true;
+            studentsButton.Click += button_students_Click;
             // 
-            // teachers_button
+            // teachersButton
             // 
-            teachers_button.Location = new Point(24, 88);
-            teachers_button.Name = "teachers_button";
-            teachers_button.Size = new Size(118, 45);
-            teachers_button.TabIndex = 1;
-            teachers_button.Text = "Učitelé";
-            teachers_button.UseVisualStyleBackColor = true;
+            teachersButton.Location = new Point(24, 88);
+            teachersButton.Name = "teachersButton";
+            teachersButton.Size = new Size(118, 45);
+            teachersButton.TabIndex = 1;
+            teachersButton.Text = "Učitelé";
+            teachersButton.UseVisualStyleBackColor = true;
             // 
-            // schoolClasses_button
+            // schoolClassesButton
             // 
-            schoolClasses_button.Location = new Point(162, 17);
-            schoolClasses_button.Name = "schoolClasses_button";
-            schoolClasses_button.Size = new Size(118, 45);
-            schoolClasses_button.TabIndex = 2;
-            schoolClasses_button.Text = "Třídy";
-            schoolClasses_button.UseVisualStyleBackColor = true;
+            schoolClassesButton.Location = new Point(162, 17);
+            schoolClassesButton.Name = "schoolClassesButton";
+            schoolClassesButton.Size = new Size(118, 45);
+            schoolClassesButton.TabIndex = 2;
+            schoolClassesButton.Text = "Třídy";
+            schoolClassesButton.UseVisualStyleBackColor = true;
             // 
-            // schoolSubjects_button
+            // schoolSubjectsButton
             // 
-            schoolSubjects_button.Location = new Point(162, 88);
-            schoolSubjects_button.Name = "schoolSubjects_button";
-            schoolSubjects_button.Size = new Size(118, 45);
-            schoolSubjects_button.TabIndex = 3;
-            schoolSubjects_button.Text = "Předměty";
-            schoolSubjects_button.UseVisualStyleBackColor = true;
+            schoolSubjectsButton.Location = new Point(162, 88);
+            schoolSubjectsButton.Name = "schoolSubjectsButton";
+            schoolSubjectsButton.Size = new Size(118, 45);
+            schoolSubjectsButton.TabIndex = 3;
+            schoolSubjectsButton.Text = "Předměty";
+            schoolSubjectsButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(302, 145);
-            Controls.Add(schoolSubjects_button);
-            Controls.Add(schoolClasses_button);
-            Controls.Add(teachers_button);
-            Controls.Add(button_students);
+            Controls.Add(schoolSubjectsButton);
+            Controls.Add(schoolClassesButton);
+            Controls.Add(teachersButton);
+            Controls.Add(studentsButton);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SchoolManager";
@@ -88,9 +88,9 @@
 
         #endregion
 
-        private Button button_students;
-        private Button teachers_button;
-        private Button schoolClasses_button;
-        private Button schoolSubjects_button;
+        private Button studentsButton;
+        private Button teachersButton;
+        private Button schoolClassesButton;
+        private Button schoolSubjectsButton;
     }
 }
