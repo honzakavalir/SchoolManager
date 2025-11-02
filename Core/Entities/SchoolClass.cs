@@ -8,6 +8,12 @@ namespace SchoolManager.Core.Entities
 {
     public class SchoolClass
     {
+        public SchoolClass(string name, Teacher teacher)
+        {
+            Name = name;
+            Teacher = teacher;
+        }
+
         public int Id { get; set; }
         public required string Name { get; set; }
         public required Teacher Teacher { get; set; }
