@@ -8,18 +8,17 @@ namespace SchoolManager.Core.Entities
 {
     public class SchoolSubject
     {
-        public SchoolSubject(string name, string abbr, Teacher teacher, string? description)
+        public SchoolSubject(string name, string abbr, string? description)
         {
             Name = name;
             Abbr = abbr;
-            Teacher = teacher;
             Description = description;
         }
 
         public int Id { get; set; }
         public required string Name { get; set; }
         public required string Abbr { get; set; }
-        public required Teacher Teacher { get; set; }
         public string? Description { get; set; }
+        public List<Teacher> Teachers { get; set; } = new List<Teacher>();
     }
 }

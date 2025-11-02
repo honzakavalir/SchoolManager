@@ -19,7 +19,7 @@ namespace SchoolManager.Core.Db
 
         public AppDbContext()
         {
-            DbFilePath = Path.Combine(AppContext.BaseDirectory, "school.db");
+            DbFilePath = Path.Combine(AppContext.BaseDirectory, "SchoolManager.db");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -27,19 +27,6 @@ namespace SchoolManager.Core.Db
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Teacher>()
-                .HasMany(teacher => teacher.TaughtSubjects)
-                .WithMany();
-
-            modelBuilder.Entity<SchoolClass>()
-                .HasMany(schoolClass => schoolClass.Students)
-                .WithOne(student => student.SchoolClass)
-                .IsRequired();
-
-            modelBuilder.Entity<SchoolClass>()
-                .HasOne(schoolClass => schoolClass.Teacher)
-                .WithMany()
-                .IsRequired();
         }
     }
 }

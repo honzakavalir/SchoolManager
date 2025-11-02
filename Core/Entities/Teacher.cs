@@ -13,5 +13,6 @@ namespace SchoolManager.Core.Entities
         public required string Email { get; set; }
         public required string PhoneNumber { get; set; }
         public List<SchoolSubject> TaughtSubjects { get; set; } = new List<SchoolSubject>();
+        public List<SchoolClass> SchoolClasses { get; set; } = new List<SchoolClass>();
     }
 }
