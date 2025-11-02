@@ -32,7 +32,6 @@
             addStudentToolStripMenuItem = new ToolStripMenuItem();
             editStudentToolStripMenuItem = new ToolStripMenuItem();
             deleteStudentToolStripMenuItem = new ToolStripMenuItem();
-            closeMenuToolStripMenuItem = new ToolStripMenuItem();
             studentsDataGridView = new DataGridView();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)studentsDataGridView).BeginInit();
@@ -40,7 +39,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { addStudentToolStripMenuItem, editStudentToolStripMenuItem, deleteStudentToolStripMenuItem, closeMenuToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { addStudentToolStripMenuItem, editStudentToolStripMenuItem, deleteStudentToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -66,13 +65,6 @@
             deleteStudentToolStripMenuItem.Size = new Size(106, 20);
             deleteStudentToolStripMenuItem.Text = "Smazat studenta";
             // 
-            // closeMenuToolStripMenuItem
-            // 
-            closeMenuToolStripMenuItem.Name = "closeMenuToolStripMenuItem";
-            closeMenuToolStripMenuItem.Size = new Size(94, 20);
-            closeMenuToolStripMenuItem.Text = "Zpět do menu";
-            closeMenuToolStripMenuItem.Click += closeMenuToolStripMenuItem_Click;
-            // 
             // studentsDataGridView
             // 
             studentsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -94,7 +86,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "StudentListForm";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Seznam studentů";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -109,7 +101,6 @@
         private ToolStripMenuItem addStudentToolStripMenuItem;
         private ToolStripMenuItem editStudentToolStripMenuItem;
         private ToolStripMenuItem deleteStudentToolStripMenuItem;
-        private ToolStripMenuItem closeMenuToolStripMenuItem;
         private DataGridView studentsDataGridView;
     }
 }

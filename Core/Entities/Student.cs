@@ -6,15 +6,24 @@ using System.Threading.Tasks;
 
 namespace SchoolManager.Core.Entities
 {
-    public class Student : Person
+    public class Student
     {
-        public Student() {}
+        protected Student() {}
 
-        public Student(string firstName, string lastName, DateTime birthDate, SchoolClass schoolClass) : base(firstName, lastName, birthDate)
+        protected Student(string firstName, string lastName, DateTime birthDate)
         {
-            SchoolClass = schoolClass;
+            FirstName = firstName;
+            LastName = lastName;
+            BirthDate = birthDate;
         }
 
-        public required SchoolClass SchoolClass { get; set; }
+        public int Id { get; set; }
+        public required string FirstName { get; set; }
+        public required string LastName { get; set; }
+        public DateTime BirthDate { get; set; }
+
+        public string FullName => $"{FirstName} ${LastName}";
+
+        
     }
 }

@@ -21,6 +21,5 @@ namespace SchoolManager.Core.Entities
         public required string Name { get; set; }
         public required string Abbr { get; set; }
         public string? Description { get; set; }
-        public List<Teacher> Teachers { get; set; } = new List<Teacher>();
     }
 }

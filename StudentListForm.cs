@@ -20,7 +20,7 @@ namespace SchoolManager
         public StudentListForm()
         {
             InitializeComponent();
-            LoadStudents();
+            //LoadStudents();
         }
 
         private void LoadStudents()
@@ -61,11 +61,6 @@ namespace SchoolManager
         private void addStudentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormHelper.OpenForm<StudentEditForm>(this);
-        }
-
-        private void closeMenuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }
