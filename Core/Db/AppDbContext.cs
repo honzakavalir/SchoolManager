@@ -38,7 +38,7 @@ namespace SchoolManager.Core.Db
                 .HasOne(s => s.SchoolClass)
                 .WithMany(c => c.Students)
                 .HasForeignKey("SchoolClassId")
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             // SchoolClass - Teacher (1:N)
             modelBuilder.Entity<SchoolClass>()

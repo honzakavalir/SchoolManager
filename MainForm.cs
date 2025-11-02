@@ -10,7 +10,12 @@ namespace SchoolManager
         public MainForm()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+
             _dbContext.Database.EnsureCreated();
+
             LoadButtonsState();
         }
 
