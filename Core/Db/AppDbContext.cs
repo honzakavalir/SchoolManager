@@ -27,6 +27,26 @@ namespace SchoolManager.Core.Db
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Grade>()
+                .HasOne(grade => grade.Student)
+                .WithMany(student => student.Grades)
+                .HasForeignKey(grade => grade.StudentId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Grade>()
+                .HasOne(grade => grade.Subject)
+                .WithMany(student => student.Grades)
+                .HasForeignKey(grade => grade.SubjectId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Student>()
+                .Navigation(student => student.Grades)
+                .AutoInclude();
+
+            modelBuilder.Entity<SchoolSubject>()
+                .Navigation(subject => subject.Grades)
+                .AutoInclude();
         }
     }
 }

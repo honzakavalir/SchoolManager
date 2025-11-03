@@ -1,29 +1,52 @@
-﻿using System;
+﻿using SchoolManager.Core.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SchoolManager.Core.Entities
 {
-    public class Student
+    public class Student : IEntity
     {
-        protected Student() {}
+        public Student() {}
 
-        protected Student(string firstName, string lastName, DateTime birthDate)
+        [SetsRequiredMembers]
+        public Student(string firstName, string lastName, DateTime birthDate)
         {
             FirstName = firstName;
             LastName = lastName;
             BirthDate = birthDate;
         }
 
+        [Key]
         public int Id { get; set; }
+
+        [Required]
         public required string FirstName { get; set; }
+
+        [Required]
         public required string LastName { get; set; }
-        public DateTime BirthDate { get; set; }
 
-        public string FullName => $"{FirstName} ${LastName}";
+        [Required]
+        public required DateTime BirthDate { get; set; }
 
-        
+        [NotMapped]
+        public string FullName => $"{FirstName} {LastName}";
+
+        [NotMapped]
+        public double GradeAverage => Grades.Select(g => g.Value).DefaultIfEmpty(0).Average();
+
+        [NotMapped]
+        public double GradeCount => Grades.Select(g => g.Value).Count();
+
+        [NotMapped]
+        public DateTime? LastGradeDate => Grades.Any() ? Grades.Max(g => g.Date) : (DateTime?)null;
+
+        public List<Grade> Grades { get; set; } = new List<Grade>();
+
     }
 }

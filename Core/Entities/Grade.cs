@@ -1,15 +1,20 @@
-﻿using System;
+﻿using SchoolManager.Core.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SchoolManager.Core.Entities
 {
-    public class Grade
+    public class Grade : IEntity
     {
         public Grade() {}
 
+        [SetsRequiredMembers]
         public Grade(int value, DateTime date, string? note, Student student, SchoolSubject subject)
         {
             Value = value;
@@ -21,12 +26,22 @@ namespace SchoolManager.Core.Entities
             Subject = subject;
         }
 
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
         public required int Value { get; set; }
+
+        [Required]
         public required DateTime Date { get; set; }
         public string? Note { get; set; }
+
+        [ForeignKey(nameof(Student))]
         public int StudentId { get; set; }
-        public required Student Student { get; set; }
+        public Student Student { get; set; }
+
+        [ForeignKey(nameof(Subject))]
         public int SubjectId { get; set; }
-        public required SchoolSubject Subject { get; set; }
+        public SchoolSubject Subject { get; set; }
     }
 }

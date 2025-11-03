@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             firstNameLabel = new Label();
-            firstNametextBox = new TextBox();
+            firstNameTextBox = new TextBox();
             lastNameTextBox = new TextBox();
             lastNameLabel = new Label();
             birthDateLabel = new Label();
@@ -47,12 +47,12 @@
             firstNameLabel.TabIndex = 0;
             firstNameLabel.Text = "Jméno";
             // 
-            // firstNametextBox
+            // firstNameTextBox
             // 
-            firstNametextBox.Location = new Point(12, 27);
-            firstNametextBox.Name = "firstNametextBox";
-            firstNametextBox.Size = new Size(294, 23);
-            firstNametextBox.TabIndex = 1;
+            firstNameTextBox.Location = new Point(12, 27);
+            firstNameTextBox.Name = "firstNameTextBox";
+            firstNameTextBox.Size = new Size(294, 23);
+            firstNameTextBox.TabIndex = 1;
             // 
             // lastNameTextBox
             // 
@@ -94,6 +94,7 @@
             saveButton.TabIndex = 6;
             saveButton.Text = "Vytvořit";
             saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
             // 
             // closeButton
             // 
@@ -116,7 +117,7 @@
             Controls.Add(birthDateLabel);
             Controls.Add(lastNameTextBox);
             Controls.Add(lastNameLabel);
-            Controls.Add(firstNametextBox);
+            Controls.Add(firstNameTextBox);
             Controls.Add(firstNameLabel);
             Name = "StudentEditForm";
             StartPosition = FormStartPosition.CenterParent;
@@ -128,7 +129,7 @@
         #endregion
 
         private Label firstNameLabel;
-        private TextBox firstNametextBox;
+        private TextBox firstNameTextBox;
         private TextBox lastNameTextBox;
         private Label lastNameLabel;
         private Label birthDateLabel;

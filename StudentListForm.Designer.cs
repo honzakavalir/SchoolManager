@@ -64,6 +64,7 @@
             deleteStudentToolStripMenuItem.Name = "deleteStudentToolStripMenuItem";
             deleteStudentToolStripMenuItem.Size = new Size(106, 20);
             deleteStudentToolStripMenuItem.Text = "Smazat studenta";
+            deleteStudentToolStripMenuItem.Click += deleteStudentToolStripMenuItem_Click;
             // 
             // studentsDataGridView
             // 
@@ -76,6 +77,7 @@
             studentsDataGridView.ReadOnly = true;
             studentsDataGridView.Size = new Size(800, 426);
             studentsDataGridView.TabIndex = 1;
+            studentsDataGridView.CellFormatting += studentsDataGridView_CellFormatting;
             // 
             // StudentListForm
             // 
@@ -88,6 +90,7 @@
             Name = "StudentListForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Seznam studentů";
+            Load += StudentListForm_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)studentsDataGridView).EndInit();
