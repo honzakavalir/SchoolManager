@@ -42,7 +42,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { addStudentToolStripMenuItem, editStudentToolStripMenuItem, deleteStudentToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.Size = new Size(984, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -75,7 +75,7 @@
             studentsDataGridView.MultiSelect = false;
             studentsDataGridView.Name = "studentsDataGridView";
             studentsDataGridView.ReadOnly = true;
-            studentsDataGridView.Size = new Size(800, 426);
+            studentsDataGridView.Size = new Size(984, 437);
             studentsDataGridView.TabIndex = 1;
             studentsDataGridView.CellFormatting += studentsDataGridView_CellFormatting;
             // 
@@ -83,7 +83,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(984, 461);
             Controls.Add(studentsDataGridView);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;

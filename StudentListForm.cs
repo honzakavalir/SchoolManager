@@ -90,14 +90,8 @@ namespace SchoolManager
 
             studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "FirstName",
-                HeaderText = "Jméno"
-            });
-
-            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "LastName",
-                HeaderText = "Příjmení"
+                DataPropertyName = "FullName",
+                HeaderText = "Jméno a příjmení"
             });
 
             studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
@@ -121,8 +115,14 @@ namespace SchoolManager
 
             studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "LastGradeDate",
+                DataPropertyName = "LastGradeValue",
                 HeaderText = "Poslední známka"
+            });
+
+            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "LastGradeDate",
+                HeaderText = "Datum poslední známky"
             });
         }
 
@@ -155,6 +155,15 @@ namespace SchoolManager
                 else if (e.Value is DateTime date)
                 {
                     e.Value = date.ToString("d");
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (studentsDataGridView.Columns[e.ColumnIndex].DataPropertyName == "LastGradeValue")
+            {
+                if (e.Value == null)
+                {
+                    e.Value = "Není k dispozici";
                     e.FormattingApplied = true;
                 }
             }

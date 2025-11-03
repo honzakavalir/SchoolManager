@@ -44,7 +44,14 @@ namespace SchoolManager.Core.Entities
         public double GradeCount => Grades.Select(g => g.Value).Count();
 
         [NotMapped]
-        public DateTime? LastGradeDate => Grades.Any() ? Grades.Max(g => g.Date) : (DateTime?)null;
+        public Grade? LastGrade => Grades.OrderByDescending(g => g.Date).FirstOrDefault();
+
+        [NotMapped]
+        public DateTime? LastGradeDate => LastGrade?.Date;
+
+        [NotMapped]
+        public int? LastGradeValue => LastGrade?.Value;
+
 
         public List<Grade> Grades { get; set; } = new List<Grade>();
 
