@@ -84,17 +84,12 @@ namespace SchoolManager
                 try
                 {
                     bool success = await _studentService.Delete(student.Id);
-                    if (success)
-                    {
-                        MessageBox.Show("Student byl úspěšně smazán.", "Hotovo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        await LoadStudents();
-                    }
-                    else
+                    if (!success)
                     {
                         MessageBox.Show("Studenta se nepodařilo smazat.", "Chyba",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    await LoadStudents();
                 }
                 catch (Exception ex)
                 {

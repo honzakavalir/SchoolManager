@@ -121,7 +121,7 @@
             Controls.Add(firstNameLabel);
             Name = "StudentEditForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Vytvořit studenta";
+            Text = "Přidat studenta";
             ResumeLayout(false);
             PerformLayout();
         }
