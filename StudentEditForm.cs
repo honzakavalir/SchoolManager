@@ -17,6 +17,7 @@ namespace SchoolManager
     {
         private StudentService _studentService;
         private AppDbContext _dbContext;
+        private Student? _student;
 
         public StudentEditForm()
         {
@@ -26,7 +27,33 @@ namespace SchoolManager
             InitializeComponent();
         }
 
-        private async void CreateStudent()
+        public void SetStudent(Student student)
+        {
+            _student = student;
+            InsertValuesIntoFrom();
+            EnableEditMode();
+        }
+
+        private void EnableEditMode()
+        {
+            this.Text = "Upravit studenta";
+            saveButton.Text = "Uložit";
+
+        }
+
+        private void InsertValuesIntoFrom()
+        {
+            if (_student == null)
+            {
+                return;
+            }
+
+            firstNameTextBox.Text = _student.FirstName;
+            lastNameTextBox.Text = _student.LastName;
+            birthDateDateTimePicker.Value = _student.BirthDate;
+        }
+
+        private async void SaveStudent()
         {
             try
             {
@@ -46,13 +73,26 @@ namespace SchoolManager
                     return;
                 }
 
-                Student student = new Student(firstName, lastName, birthDate);
-                await _studentService.Create(student);
-                Close();
+                if (_student == null)
+                {
+                    Student student = new Student(firstName, lastName, birthDate);
+                    await _studentService.Create(student);
+                    Close();
+                } 
+                else
+                {
+                    _student.FirstName = firstNameTextBox.Text;
+                    _student.LastName = lastNameTextBox.Text;
+                    _student.BirthDate = birthDateDateTimePicker.Value;
+                    await _studentService.Update(_student.Id, _student);
+                    Close();
+                }
+
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Chyba při vytváření studenta: {ex.Message}", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Chyba při ukládání studenta: {ex.Message}", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -63,7 +103,7 @@ namespace SchoolManager
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            CreateStudent();
+            SaveStudent();
         }
     }
 }

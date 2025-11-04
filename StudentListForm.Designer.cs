@@ -58,6 +58,7 @@
             editStudentToolStripMenuItem.Name = "editStudentToolStripMenuItem";
             editStudentToolStripMenuItem.Size = new Size(106, 20);
             editStudentToolStripMenuItem.Text = "Upravit studenta";
+            editStudentToolStripMenuItem.Click += editStudentToolStripMenuItem_Click;
             // 
             // deleteStudentToolStripMenuItem
             // 

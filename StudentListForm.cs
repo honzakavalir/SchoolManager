@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolManager.Core.Db;
 using SchoolManager.Core.Entities;
-using SchoolManager.Core.Helpers;
 using SchoolManager.Core.Interfaces;
 using SchoolManager.Core.Services;
 using System;
@@ -37,6 +36,29 @@ namespace SchoolManager
         {
             _students = await _studentService.FindAll();
             studentsDataGridView.DataSource = _students;
+        }
+
+        private async Task AddStudent()
+        {
+            StudentEditForm form = new StudentEditForm();
+            form.ShowDialog();
+            await LoadStudents();
+        }
+
+        private async Task EditStudent()
+        {
+            if (studentsDataGridView.CurrentRow == null)
+            {
+                MessageBox.Show("Vyberte nejprve studenta, kterého chcete smazat.", "Chyba",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Student student = (Student)studentsDataGridView.CurrentRow.DataBoundItem;
+            StudentEditForm form = new StudentEditForm();
+            form.SetStudent(student);
+            form.ShowDialog();
+            await LoadStudents();
         }
 
         private async Task DeleteStudent()
@@ -134,8 +156,12 @@ namespace SchoolManager
 
         private async void addStudentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormHelper.OpenForm<StudentEditForm>(this);
-            await LoadStudents();
+            await AddStudent();
+        }
+
+        private async void editStudentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            await EditStudent();
         }
 
         private async void deleteStudentToolStripMenuItem_Click(object sender, EventArgs e)
