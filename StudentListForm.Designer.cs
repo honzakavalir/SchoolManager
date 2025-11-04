@@ -28,23 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            menuStrip1 = new MenuStrip();
+            menuStrip = new MenuStrip();
             addStudentToolStripMenuItem = new ToolStripMenuItem();
             editStudentToolStripMenuItem = new ToolStripMenuItem();
             deleteStudentToolStripMenuItem = new ToolStripMenuItem();
+            showGradesToolStripMenuItem = new ToolStripMenuItem();
+            showSubjectsToolStripMenuItem1 = new ToolStripMenuItem();
             studentsDataGridView = new DataGridView();
-            menuStrip1.SuspendLayout();
+            menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)studentsDataGridView).BeginInit();
             SuspendLayout();
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { addStudentToolStripMenuItem, editStudentToolStripMenuItem, deleteStudentToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(984, 24);
-            menuStrip1.TabIndex = 0;
-            menuStrip1.Text = "menuStrip1";
+            menuStrip.Items.AddRange(new ToolStripItem[] { addStudentToolStripMenuItem, editStudentToolStripMenuItem, deleteStudentToolStripMenuItem, showGradesToolStripMenuItem, showSubjectsToolStripMenuItem1 });
+            menuStrip.Location = new Point(0, 0);
+            menuStrip.Name = "menuStrip";
+            menuStrip.Size = new Size(984, 24);
+            menuStrip.TabIndex = 0;
+            menuStrip.Text = "menuStrip1";
             // 
             // addStudentToolStripMenuItem
             // 
@@ -67,6 +69,19 @@
             deleteStudentToolStripMenuItem.Text = "Smazat studenta";
             deleteStudentToolStripMenuItem.Click += deleteStudentToolStripMenuItem_Click;
             // 
+            // showGradesToolStripMenuItem
+            // 
+            showGradesToolStripMenuItem.Name = "showGradesToolStripMenuItem";
+            showGradesToolStripMenuItem.Size = new Size(155, 20);
+            showGradesToolStripMenuItem.Text = "Zobrazit známky studenta";
+            // 
+            // showSubjectsToolStripMenuItem1
+            // 
+            showSubjectsToolStripMenuItem1.Name = "showSubjectsToolStripMenuItem1";
+            showSubjectsToolStripMenuItem1.Size = new Size(115, 20);
+            showSubjectsToolStripMenuItem1.Text = "Seznam předmětů";
+            showSubjectsToolStripMenuItem1.Click += showSubjectsToolStripMenuItem1_Click;
+            // 
             // studentsDataGridView
             // 
             studentsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -86,14 +101,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 461);
             Controls.Add(studentsDataGridView);
-            Controls.Add(menuStrip1);
-            MainMenuStrip = menuStrip1;
+            Controls.Add(menuStrip);
+            MainMenuStrip = menuStrip;
             Name = "StudentListForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Seznam studentů";
             Load += StudentListForm_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            menuStrip.ResumeLayout(false);
+            menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)studentsDataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -101,10 +116,12 @@
 
         #endregion
 
-        private MenuStrip menuStrip1;
+        private MenuStrip menuStrip;
         private ToolStripMenuItem addStudentToolStripMenuItem;
         private ToolStripMenuItem editStudentToolStripMenuItem;
         private ToolStripMenuItem deleteStudentToolStripMenuItem;
         private DataGridView studentsDataGridView;
+        private ToolStripMenuItem showGradesToolStripMenuItem;
+        private ToolStripMenuItem showSubjectsToolStripMenuItem1;
     }
 }

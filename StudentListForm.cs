@@ -32,6 +32,50 @@ namespace SchoolManager
             this.Load += StudentListForm_Load;
         }
 
+        public void SetupDataGrid()
+        {
+            studentsDataGridView.AutoGenerateColumns = false;
+            studentsDataGridView.AllowUserToAddRows = false;
+            studentsDataGridView.Columns.Clear();
+
+            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "FullName",
+                HeaderText = "Jméno a příjmení"
+            });
+
+            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "BirthDate",
+                HeaderText = "Datum narození",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "d" }
+            });
+
+            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "GradeAverage",
+                HeaderText = "Průměr známek"
+            });
+
+            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "GradeCount",
+                HeaderText = "Celkem známek"
+            });
+
+            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "LastGradeValue",
+                HeaderText = "Poslední známka"
+            });
+
+            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "LastGradeDate",
+                HeaderText = "Datum poslední známky"
+            });
+        }
+
         private async Task LoadStudents()
         {
             _students = await _studentService.FindAll();
@@ -99,48 +143,10 @@ namespace SchoolManager
             }
         }
 
-        public void SetupDataGrid()
+        private void OpenSubjectList()
         {
-            studentsDataGridView.AutoGenerateColumns = false;
-            studentsDataGridView.AllowUserToAddRows = false;
-            studentsDataGridView.Columns.Clear();
-
-            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "FullName",
-                HeaderText = "Jméno a příjmení"
-            });
-
-            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "BirthDate",
-                HeaderText = "Datum narození",
-                DefaultCellStyle = new DataGridViewCellStyle { Format = "d" }
-            });
-
-            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "GradeAverage",
-                HeaderText = "Průměr známek"
-            });
-
-            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "GradeCount",
-                HeaderText = "Celkem známek"
-            });
-
-            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "LastGradeValue",
-                HeaderText = "Poslední známka"
-            });
-
-            studentsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "LastGradeDate",
-                HeaderText = "Datum poslední známky"
-            });
+            SchoolSubjectListForm form = new SchoolSubjectListForm();
+            form.ShowDialog();
         }
 
         private async void StudentListForm_Load(object sender, EventArgs e)
@@ -162,6 +168,11 @@ namespace SchoolManager
         private async void deleteStudentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             await DeleteStudent();
+        }
+
+        private void showSubjectsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenSubjectList();
         }
 
         private void studentsDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
