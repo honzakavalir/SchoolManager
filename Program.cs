@@ -1,4 +1,6 @@
-using SchoolManager.Core.Db;
+
+
+using SchoolManager.Database;
 
 namespace SchoolManager
 {

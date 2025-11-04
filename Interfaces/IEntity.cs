@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolManager.Core.Interfaces
+namespace SchoolManager.Interfaces
 {
     public interface IEntity
     {

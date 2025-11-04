@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SchoolManager.Core.Db;
-using SchoolManager.Core.Interfaces;
+using SchoolManager.Database;
+using SchoolManager.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolManager.Core.Base
+namespace SchoolManager.Base
 {
     public class BaseService<T> : IService<T> where T : class, IEntity
     {

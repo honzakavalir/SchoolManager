@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SchoolManager.Core.Entities;
+using SchoolManager.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolManager.Core.Db
+namespace SchoolManager.Database
 {
     public class AppDbContext : DbContext
     {

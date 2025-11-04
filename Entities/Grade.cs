@@ -1,4 +1,4 @@
-﻿using SchoolManager.Core.Interfaces;
+﻿using SchoolManager.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolManager.Core.Entities
+namespace SchoolManager.Entities
 {
     public class Grade : IEntity
     {

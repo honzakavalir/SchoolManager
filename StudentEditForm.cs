@@ -1,6 +1,6 @@
-﻿using SchoolManager.Core.Db;
-using SchoolManager.Core.Entities;
-using SchoolManager.Core.Services;
+﻿using SchoolManager.Database;
+using SchoolManager.Entities;
+using SchoolManager.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
