@@ -120,6 +120,8 @@
             Controls.Add(abbrLabel);
             Controls.Add(nameTextBox);
             Controls.Add(nameLabel);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "SchoolSubjectEditForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Vytvořit předmět";

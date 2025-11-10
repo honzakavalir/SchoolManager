@@ -51,6 +51,7 @@
             newGradeToolStripMenuItem.Name = "newGradeToolStripMenuItem";
             newGradeToolStripMenuItem.Size = new Size(91, 20);
             newGradeToolStripMenuItem.Text = "Nová známka";
+            newGradeToolStripMenuItem.Click += newGradeToolStripMenuItem_Click;
             // 
             // editGradeToolStripMenuItem
             // 

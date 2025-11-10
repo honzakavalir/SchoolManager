@@ -119,6 +119,8 @@
             Controls.Add(lastNameLabel);
             Controls.Add(firstNameTextBox);
             Controls.Add(firstNameLabel);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "StudentEditForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Přidat studenta";

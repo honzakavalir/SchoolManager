@@ -13,10 +13,13 @@ namespace SchoolManager
 {
     public partial class GradeListForm : Form
     {
+        private Student _student;
+
         public GradeListForm(Student student)
         {
             InitializeComponent();
-            this.Text = $"Známky studenta {student.FullName}";
+            _student = student;
+            this.Text = $"Známky studenta {_student.FullName}";
             SetupDataGrid();
         }
 
@@ -25,6 +28,17 @@ namespace SchoolManager
             gradesDataGridView.AutoGenerateColumns = false;
             gradesDataGridView.AllowUserToAddRows = false;
             gradesDataGridView.Columns.Clear();
+        }
+
+        private async Task AddGrade()
+        {
+            GradeEditForm form = new GradeEditForm(_student);
+            form.ShowDialog();
+        }
+
+        private void newGradeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddGrade();
         }
     }
 }
