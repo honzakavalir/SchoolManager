@@ -17,13 +17,18 @@ namespace SchoolManager
     {
         private AppDbContext _dbContext;
         private SchoolSubjectService _schoolSubjectService;
+        private StudentService _studentService;
+
         private List<SchoolSubject> _schoolSubjects;
+        private Student _student;
 
         public GradeEditForm(Student student)
         {
             _dbContext = new AppDbContext();
             _schoolSubjectService = new SchoolSubjectService(_dbContext);
+            _studentService = new StudentService(_dbContext);
             _schoolSubjects = new List<SchoolSubject>();
+            _student = student;
 
             InitializeComponent();
 
@@ -42,15 +47,45 @@ namespace SchoolManager
 
         private async void SetupSchoolSubjectCombobox()
         {
-            await LoadSchoolSubjects(); 
+            await LoadSchoolSubjects();
             schoolSubjectComboBox.DataSource = _schoolSubjects;
             schoolSubjectComboBox.DisplayMember = "Abbr";
             schoolSubjectComboBox.ValueMember = "Id";
+        }
+
+        private async Task SaveGrade()
+        {
+            Grade grade = new Grade
+            {
+                StudentId = _student.Id,
+                SubjectId = (int)schoolSubjectComboBox.SelectedValue,
+                Value = (int)gradeComboBox.SelectedValue,
+                Date = DateTime.Now
+            };
+
+            Student? student = await _studentService.FindOne(_student.Id);
+            if (student != null)
+            {
+                student.Grades.Add(grade);
+                await _studentService.Update(_student.Id, student);
+            }
+            Close();
         }
 
         private async Task LoadSchoolSubjects()
         {
             _schoolSubjects = await _schoolSubjectService.FindAll();
         }
+
+        private async void saveButton_Click(object sender, EventArgs e)
+        {
+            await SaveGrade();
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
     }
 }

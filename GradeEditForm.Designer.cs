@@ -118,6 +118,7 @@
             closeButton.TabIndex = 10;
             closeButton.Text = "Zavřít";
             closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
             // 
             // saveButton
             // 
@@ -127,6 +128,7 @@
             saveButton.TabIndex = 9;
             saveButton.Text = "Vytvořit";
             saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
             // 
             // GradeEditForm
             // 
