@@ -29,7 +29,7 @@ namespace SchoolManager
             SetupDataGrid();
         }
 
-        public void SetupDataGrid()
+        private void SetupDataGrid()
         {
             schoolSubjectsDataGridView.AutoGenerateColumns = false;
             schoolSubjectsDataGridView.AllowUserToAddRows = false;

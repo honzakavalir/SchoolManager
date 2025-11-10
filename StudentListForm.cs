@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace SchoolManager
 {
-    public partial class StudentListForm : Form, IListForm
+    public partial class StudentListForm : Form
     {
         private StudentService _studentService;
         private AppDbContext _dbContext;
@@ -31,7 +31,7 @@ namespace SchoolManager
             SetupDataGrid();
         }
 
-        public void SetupDataGrid()
+        private void SetupDataGrid()
         {
             studentsDataGridView.AutoGenerateColumns = false;
             studentsDataGridView.AllowUserToAddRows = false;
@@ -149,7 +149,16 @@ namespace SchoolManager
 
         private void OpenGradeList()
         {
-            GradeListForm form = new GradeListForm();
+            if (studentsDataGridView.CurrentRow == null)
+            {
+                MessageBox.Show("Vyberte nejprve studenta.", "Chyba",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Student student = (Student)studentsDataGridView.CurrentRow.DataBoundItem;
+
+            GradeListForm form = new GradeListForm(student);
             form.ShowDialog();
         }
 

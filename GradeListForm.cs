@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolManager.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,18 @@ namespace SchoolManager
 {
     public partial class GradeListForm : Form
     {
-        public GradeListForm()
+        public GradeListForm(Student student)
         {
             InitializeComponent();
+            this.Text = $"Známky studenta {student.FullName}";
+            SetupDataGrid();
+        }
+
+        private void SetupDataGrid()
+        {
+            gradesDataGridView.AutoGenerateColumns = false;
+            gradesDataGridView.AllowUserToAddRows = false;
+            gradesDataGridView.Columns.Clear();
         }
     }
 }
