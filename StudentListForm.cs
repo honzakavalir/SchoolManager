@@ -29,7 +29,6 @@ namespace SchoolManager
 
             InitializeComponent();
             SetupDataGrid();
-            this.Load += StudentListForm_Load;
         }
 
         public void SetupDataGrid()
@@ -93,7 +92,7 @@ namespace SchoolManager
         {
             if (studentsDataGridView.CurrentRow == null)
             {
-                MessageBox.Show("Vyberte nejprve studenta, kterého chcete smazat.", "Chyba",
+                MessageBox.Show("Vyberte nejprve studenta, kterého chcete upravit.", "Chyba",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -149,11 +148,6 @@ namespace SchoolManager
             form.ShowDialog();
         }
 
-        private async void StudentListForm_Load(object sender, EventArgs e)
-        {
-            await LoadStudents();
-        }
-
 
         private async void addStudentToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -199,6 +193,11 @@ namespace SchoolManager
                     e.FormattingApplied = true;
                 }
             }
+        }
+
+        private async void StudentListForm_Load(object sender, EventArgs e)
+        {
+            await LoadStudents();
         }
     }
 }

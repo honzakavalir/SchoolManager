@@ -30,8 +30,8 @@
         {
             menuStrip = new MenuStrip();
             addSubjectToolStripMenuItem = new ToolStripMenuItem();
-            upravitPředmětToolStripMenuItem = new ToolStripMenuItem();
-            smazatPředmětToolStripMenuItem = new ToolStripMenuItem();
+            editSchoolSubjectToolStripMenuItem = new ToolStripMenuItem();
+            removeSchoolSubjectToolStripMenuItem = new ToolStripMenuItem();
             schoolSubjectsDataGridView = new DataGridView();
             menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)schoolSubjectsDataGridView).BeginInit();
@@ -39,7 +39,7 @@
             // 
             // menuStrip
             // 
-            menuStrip.Items.AddRange(new ToolStripItem[] { addSubjectToolStripMenuItem, upravitPředmětToolStripMenuItem, smazatPředmětToolStripMenuItem });
+            menuStrip.Items.AddRange(new ToolStripItem[] { addSubjectToolStripMenuItem, editSchoolSubjectToolStripMenuItem, removeSchoolSubjectToolStripMenuItem });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Size = new Size(800, 24);
@@ -51,18 +51,21 @@
             addSubjectToolStripMenuItem.Name = "addSubjectToolStripMenuItem";
             addSubjectToolStripMenuItem.Size = new Size(98, 20);
             addSubjectToolStripMenuItem.Text = "Přidat předmět";
+            addSubjectToolStripMenuItem.Click += addSubjectToolStripMenuItem_Click;
             // 
-            // upravitPředmětToolStripMenuItem
+            // editSchoolSubjectToolStripMenuItem
             // 
-            upravitPředmětToolStripMenuItem.Name = "upravitPředmětToolStripMenuItem";
-            upravitPředmětToolStripMenuItem.Size = new Size(105, 20);
-            upravitPředmětToolStripMenuItem.Text = "Upravit předmět";
+            editSchoolSubjectToolStripMenuItem.Name = "editSchoolSubjectToolStripMenuItem";
+            editSchoolSubjectToolStripMenuItem.Size = new Size(105, 20);
+            editSchoolSubjectToolStripMenuItem.Text = "Upravit předmět";
+            editSchoolSubjectToolStripMenuItem.Click += editSchoolSubjectToolStripMenuItem_Click;
             // 
-            // smazatPředmětToolStripMenuItem
+            // removeSchoolSubjectToolStripMenuItem
             // 
-            smazatPředmětToolStripMenuItem.Name = "smazatPředmětToolStripMenuItem";
-            smazatPředmětToolStripMenuItem.Size = new Size(105, 20);
-            smazatPředmětToolStripMenuItem.Text = "Smazat předmět";
+            removeSchoolSubjectToolStripMenuItem.Name = "removeSchoolSubjectToolStripMenuItem";
+            removeSchoolSubjectToolStripMenuItem.Size = new Size(105, 20);
+            removeSchoolSubjectToolStripMenuItem.Text = "Smazat předmět";
+            removeSchoolSubjectToolStripMenuItem.Click += removeSchoolSubjectToolStripMenuItem_Click;
             // 
             // schoolSubjectsDataGridView
             // 
@@ -86,6 +89,7 @@
             Name = "SchoolSubjectListForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Seznam předmětů";
+            Load += SchoolSubjectListForm_Load;
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)schoolSubjectsDataGridView).EndInit();
@@ -97,8 +101,8 @@
 
         private MenuStrip menuStrip;
         private ToolStripMenuItem addSubjectToolStripMenuItem;
-        private ToolStripMenuItem upravitPředmětToolStripMenuItem;
-        private ToolStripMenuItem smazatPředmětToolStripMenuItem;
+        private ToolStripMenuItem editSchoolSubjectToolStripMenuItem;
+        private ToolStripMenuItem removeSchoolSubjectToolStripMenuItem;
         private DataGridView schoolSubjectsDataGridView;
     }
 }

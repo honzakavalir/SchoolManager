@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManager.Base
 {
-    public class BaseService<T> : IService<T> where T : class, IEntity
+    public abstract class BaseService<T> : IService<T> where T : class, IEntity
     {
         protected readonly AppDbContext _context;
         protected readonly DbSet<T> _dbSet;
