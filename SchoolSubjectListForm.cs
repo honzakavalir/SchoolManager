@@ -89,8 +89,7 @@ namespace SchoolManager
             }
 
             SchoolSubject schoolSubject = (SchoolSubject)schoolSubjectsDataGridView.CurrentRow.DataBoundItem;
-            SchoolSubjectEditForm form = new SchoolSubjectEditForm();
-            form.SetSchoolSubject(schoolSubject);
+            SchoolSubjectEditForm form = new SchoolSubjectEditForm(schoolSubject);
             form.ShowDialog();
             await LoadSchoolSubjects();
         }

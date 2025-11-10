@@ -19,18 +19,19 @@ namespace SchoolManager
         private AppDbContext _dbContext;
         private SchoolSubject? _schoolSubject;
 
-        public SchoolSubjectEditForm()
+        public SchoolSubjectEditForm(SchoolSubject? schoolSubject = null)
         {
             _dbContext = new AppDbContext();
             _schoolSubjectService = new SchoolSubjectService(_dbContext);
-            InitializeComponent();
-        }
 
-        public void SetSchoolSubject(SchoolSubject schoolSubject)
-        {
-            _schoolSubject = schoolSubject;
-            InsertValuesIntoFrom();
-            EnableEditMode();
+            InitializeComponent();
+
+            if (schoolSubject != null)
+            {
+                _schoolSubject = schoolSubject;
+                InsertValuesIntoFrom();
+                EnableEditMode();
+            }
         }
 
         private void EnableEditMode()
@@ -42,14 +43,9 @@ namespace SchoolManager
 
         private void InsertValuesIntoFrom()
         {
-            if (_schoolSubject == null)
-            {
-                return;
-            }
-
-            nameTextBox.Text = _schoolSubject.Name;
-            abbrTextBox.Text = _schoolSubject.Abbr;
-            descriptionTextBox.Text = _schoolSubject.Description;
+            nameTextBox.Text = _schoolSubject!.Name;
+            abbrTextBox.Text = _schoolSubject!.Abbr;
+            descriptionTextBox.Text = _schoolSubject!.Description;
         }
 
         private async void SaveSchoolSubject()

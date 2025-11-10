@@ -19,19 +19,19 @@ namespace SchoolManager
         private AppDbContext _dbContext;
         private Student? _student;
 
-        public StudentEditForm()
+        public StudentEditForm(Student? student = null)
         {
             _dbContext = new AppDbContext();
             _studentService = new StudentService(_dbContext);
 
             InitializeComponent();
-        }
 
-        public void SetStudent(Student student)
-        {
-            _student = student;
-            InsertValuesIntoFrom();
-            EnableEditMode();
+            if (student != null)
+            {
+                _student = student;
+                InsertValuesIntoFrom();
+                EnableEditMode();
+            }
         }
 
         private void EnableEditMode()
@@ -43,14 +43,9 @@ namespace SchoolManager
 
         private void InsertValuesIntoFrom()
         {
-            if (_student == null)
-            {
-                return;
-            }
-
-            firstNameTextBox.Text = _student.FirstName;
-            lastNameTextBox.Text = _student.LastName;
-            birthDateDateTimePicker.Value = _student.BirthDate;
+            firstNameTextBox.Text = _student!.FirstName;
+            lastNameTextBox.Text = _student!.LastName;
+            birthDateDateTimePicker.Value = _student!.BirthDate;
         }
 
         private async void SaveStudent()

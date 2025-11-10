@@ -72,8 +72,9 @@
             // showGradesToolStripMenuItem
             // 
             showGradesToolStripMenuItem.Name = "showGradesToolStripMenuItem";
-            showGradesToolStripMenuItem.Size = new Size(155, 20);
-            showGradesToolStripMenuItem.Text = "Zobrazit známky studenta";
+            showGradesToolStripMenuItem.Size = new Size(111, 20);
+            showGradesToolStripMenuItem.Text = "Známky studenta";
+            showGradesToolStripMenuItem.Click += showGradesToolStripMenuItem_Click;
             // 
             // showSubjectsToolStripMenuItem1
             // 

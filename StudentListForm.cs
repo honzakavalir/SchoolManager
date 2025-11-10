@@ -98,8 +98,7 @@ namespace SchoolManager
             }
 
             Student student = (Student)studentsDataGridView.CurrentRow.DataBoundItem;
-            StudentEditForm form = new StudentEditForm();
-            form.SetStudent(student);
+            StudentEditForm form = new StudentEditForm(student);
             form.ShowDialog();
             await LoadStudents();
         }
@@ -148,6 +147,12 @@ namespace SchoolManager
             form.ShowDialog();
         }
 
+        private void OpenGradeList()
+        {
+            GradeListForm form = new GradeListForm();
+            form.ShowDialog();
+        }
+
 
         private async void addStudentToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -167,6 +172,11 @@ namespace SchoolManager
         private void showSubjectsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             OpenSubjectList();
+        }
+
+        private void showGradesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenGradeList();
         }
 
         private void studentsDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
