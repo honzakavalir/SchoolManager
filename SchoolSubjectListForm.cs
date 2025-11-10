@@ -49,6 +49,18 @@ namespace SchoolManager
 
             schoolSubjectsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
+                DataPropertyName = "GradeAverage",
+                HeaderText = "Průměr známek"
+            });
+
+            schoolSubjectsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "GradeCount",
+                HeaderText = "Celkem známek"
+            });
+
+            schoolSubjectsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
                 DataPropertyName = "Description",
                 HeaderText = "Popis"
             });

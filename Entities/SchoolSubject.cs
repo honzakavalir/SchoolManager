@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
@@ -33,5 +34,11 @@ namespace SchoolManager.Entities
         public string? Description { get; set; }
 
         public List<Grade> Grades { get; set; } = new List<Grade>();
+
+        [NotMapped]
+        public double GradeAverage => Grades.Select(g => g.Value).DefaultIfEmpty(0).Average();
+
+        [NotMapped]
+        public double GradeCount => Grades.Select(g => g.Value).Count();
     }
 }
