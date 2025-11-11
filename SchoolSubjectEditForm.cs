@@ -55,6 +55,14 @@ namespace SchoolManager
                 string abbr = abbrTextBox.Text.Trim();
                 string description = descriptionTextBox.Text.Trim();
 
+                SchoolSubject? existingSubject = await _schoolSubjectService.FindByAbbr(abbr);
+
+                if (existingSubject != null && (_schoolSubject == null || existingSubject.Id != _schoolSubject.Id))
+                {
+                    MessageBox.Show("Předmět se zadanou zkratkou již existuje.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (string.IsNullOrEmpty(name))
                 {
                     MessageBox.Show("Zadejte název předmětu.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -71,7 +79,6 @@ namespace SchoolManager
                 {
                     SchoolSubject schoolSubject = new SchoolSubject(name, abbr, description);
                     await _schoolSubjectService.Create(schoolSubject);
-                    Close();
                 }
                 else
                 {
@@ -79,10 +86,8 @@ namespace SchoolManager
                     _schoolSubject.Abbr = abbr;
                     _schoolSubject.Description = description;
                     await _schoolSubjectService.Update(_schoolSubject.Id, _schoolSubject);
-                    Close();
                 }
-
-
+                Close();
             }
             catch (Exception ex)
             {

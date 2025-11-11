@@ -13,5 +13,10 @@ namespace SchoolManager.Services
     public class SchoolSubjectService : BaseService<SchoolSubject>
     {
         public SchoolSubjectService(AppDbContext context) : base(context) {}
+
+        public async Task<SchoolSubject?> FindByAbbr(string abbr)
+        {
+            return await _dbSet.Where(subject => subject.Abbr == abbr).FirstOrDefaultAsync();
+        }
     }
 }
