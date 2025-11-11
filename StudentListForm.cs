@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,9 +22,9 @@ namespace SchoolManager
         private AppDbContext _dbContext;
         private List<Student> _students;
 
-        public StudentListForm()
+        public StudentListForm(AppDbContext dbContext)
         {
-            _dbContext = new AppDbContext();
+            _dbContext = dbContext;
             _studentService = new StudentService(_dbContext);
             _students = new List<Student>();
 
@@ -83,7 +84,7 @@ namespace SchoolManager
 
         private async Task AddStudent()
         {
-            StudentEditForm form = new StudentEditForm();
+            StudentEditForm form = new StudentEditForm(_dbContext);
             form.ShowDialog();
             await LoadStudents();
         }
@@ -98,7 +99,7 @@ namespace SchoolManager
             }
 
             Student student = (Student)studentsDataGridView.CurrentRow.DataBoundItem;
-            StudentEditForm form = new StudentEditForm(student);
+            StudentEditForm form = new StudentEditForm(_dbContext, student);
             form.ShowDialog();
             await LoadStudents();
         }
@@ -141,13 +142,14 @@ namespace SchoolManager
             }
         }
 
-        private void OpenSubjectList()
+        private async Task OpenSubjectList()
         {
-            SchoolSubjectListForm form = new SchoolSubjectListForm();
+            SchoolSubjectListForm form = new SchoolSubjectListForm(_dbContext);
             form.ShowDialog();
+            await LoadStudents();
         }
 
-        private void OpenGradeList()
+        private async Task OpenGradeList()
         {
             if (studentsDataGridView.CurrentRow == null)
             {
@@ -158,8 +160,9 @@ namespace SchoolManager
 
             Student student = (Student)studentsDataGridView.CurrentRow.DataBoundItem;
 
-            GradeListForm form = new GradeListForm(student);
+            GradeListForm form = new GradeListForm(_dbContext, student);
             form.ShowDialog();
+            await LoadStudents();
         }
 
 
@@ -178,14 +181,14 @@ namespace SchoolManager
             await DeleteStudent();
         }
 
-        private void showSubjectsToolStripMenuItem1_Click(object sender, EventArgs e)
+        private async void showSubjectsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenSubjectList();
+            await OpenSubjectList();
         }
 
-        private void showGradesToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void showGradesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenGradeList();
+            await OpenGradeList();
         }
 
         private void studentsDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

@@ -19,9 +19,9 @@ namespace SchoolManager
         private AppDbContext _dbContext;
         private Student? _student;
 
-        public StudentEditForm(Student? student = null)
+        public StudentEditForm(AppDbContext dbContext, Student? student = null)
         {
-            _dbContext = new AppDbContext();
+            _dbContext = dbContext;
             _studentService = new StudentService(_dbContext);
 
             InitializeComponent();

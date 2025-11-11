@@ -25,9 +25,9 @@ namespace SchoolManager
         private Student _student;
         private Grade? _grade;
 
-        public GradeEditForm(Student student, Grade? grade = null)
+        public GradeEditForm(AppDbContext dbContext, Student student, Grade? grade = null)
         {
-            _dbContext = new AppDbContext();
+            _dbContext = dbContext;
             _schoolSubjectService = new SchoolSubjectService(_dbContext);
             _studentService = new StudentService(_dbContext);
             _gradeService = new GradeService(_dbContext);
@@ -80,13 +80,17 @@ namespace SchoolManager
 
         private async Task SaveGrade()
         {
+            int subjectId = (int)schoolSubjectComboBox.SelectedValue;
+            int gradeValue = (int)gradeComboBox.SelectedValue;
+            string note = noteTextBox.Text;
+
             Grade grade = new Grade
             {
                 StudentId = _student.Id,
-                SubjectId = (int)schoolSubjectComboBox.SelectedValue,
-                Value = (int)gradeComboBox.SelectedValue,
+                SubjectId = subjectId,
+                Value = gradeValue,
                 Date = DateTime.Now,
-                Note = noteTextBox.Text
+                Note = note
             };
 
             Student? student = await _studentService.FindOne(_student.Id);
@@ -98,10 +102,9 @@ namespace SchoolManager
 
             if (_student != null && _grade != null)
             {
-                _grade.Value = grade.Value;
-                _grade.SubjectId = grade.SubjectId;
-                _grade.Date = grade.Date;
-                _grade.Note = noteTextBox.Text;
+                _grade.Value = gradeValue;
+                _grade.SubjectId = subjectId;
+                _grade.Note = note;
                 await _gradeService.Update(_grade.Id, _grade);
             }
 

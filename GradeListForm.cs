@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,9 @@ namespace SchoolManager
         private Student _student;
         private List<Grade> _grades;
 
-        public GradeListForm(Student student)
+        public GradeListForm(AppDbContext dbContext, Student student)
         {
-            _dbContext = new AppDbContext();
+            _dbContext = dbContext;
             _gradeService = new GradeService(_dbContext);
             _student = student;
             _grades = new List<Grade>();
@@ -74,7 +75,7 @@ namespace SchoolManager
 
         private async Task AddGrade()
         {
-            GradeEditForm form = new GradeEditForm(_student);
+            GradeEditForm form = new GradeEditForm(_dbContext, _student);
             form.ShowDialog();
             await LoadGrades();
         }
@@ -89,7 +90,7 @@ namespace SchoolManager
             }
 
             Grade grade = (Grade)gradesDataGridView.CurrentRow.DataBoundItem;
-            GradeEditForm form = new GradeEditForm(_student, grade);
+            GradeEditForm form = new GradeEditForm(_dbContext, _student, grade);
             form.ShowDialog();
             await LoadGrades();
         }

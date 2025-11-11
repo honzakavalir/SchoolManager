@@ -19,9 +19,9 @@ namespace SchoolManager
         private AppDbContext _dbContext;
         private List<SchoolSubject> _schoolSubjects;
 
-        public SchoolSubjectListForm()
+        public SchoolSubjectListForm(AppDbContext dbContext)
         {
-            _dbContext = new AppDbContext();
+            _dbContext = dbContext;
             _schoolSubjectService = new SchoolSubjectService(_dbContext);
             _schoolSubjects = new List<SchoolSubject>();
 
@@ -74,7 +74,7 @@ namespace SchoolManager
 
         private async Task AddSchoolSubject()
         {
-            SchoolSubjectEditForm form = new SchoolSubjectEditForm();
+            SchoolSubjectEditForm form = new SchoolSubjectEditForm(_dbContext);
             form.ShowDialog();
             await LoadSchoolSubjects();
         }
@@ -89,7 +89,7 @@ namespace SchoolManager
             }
 
             SchoolSubject schoolSubject = (SchoolSubject)schoolSubjectsDataGridView.CurrentRow.DataBoundItem;
-            SchoolSubjectEditForm form = new SchoolSubjectEditForm(schoolSubject);
+            SchoolSubjectEditForm form = new SchoolSubjectEditForm(_dbContext, schoolSubject);
             form.ShowDialog();
             await LoadSchoolSubjects();
         }

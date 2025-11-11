@@ -18,7 +18,6 @@ namespace SchoolManager.Services
         {
             return await _dbSet
                 .Where(grade => grade.StudentId == studentId)
-                .Include(g => g.Subject)
                 .OrderByDescending(grade => grade.Date)
                 .ToListAsync();
         }

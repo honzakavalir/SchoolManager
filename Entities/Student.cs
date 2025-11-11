@@ -38,7 +38,7 @@ namespace SchoolManager.Entities
         public string FullName => $"{FirstName} {LastName}";
 
         [NotMapped]
-        public double GradeAverage => Grades.Select(g => g.Value).DefaultIfEmpty(0).Average();
+        public double GradeAverage => Math.Round(Grades.Select(g => g.Value).DefaultIfEmpty(0).Average(), 2);
 
         [NotMapped]
         public double GradeCount => Grades.Select(g => g.Value).Count();

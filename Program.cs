@@ -1,5 +1,6 @@
 
 
+using Microsoft.EntityFrameworkCore;
 using SchoolManager.Database;
 
 namespace SchoolManager
@@ -11,12 +12,11 @@ namespace SchoolManager
         {
             ApplicationConfiguration.Initialize();
 
-            using (var context = new AppDbContext())
+            using (var _dbContext = new AppDbContext())
             {
-                context.Database.EnsureCreated();
+                _dbContext.Database.EnsureCreated();
+                Application.Run(new StudentListForm(_dbContext));
             }
-
-            Application.Run(new StudentListForm());
         }
     }
 }
