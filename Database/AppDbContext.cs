@@ -47,6 +47,10 @@ namespace SchoolManager.Database
             modelBuilder.Entity<SchoolSubject>()
                 .Navigation(subject => subject.Grades)
                 .AutoInclude();
+
+            modelBuilder.Entity<Grade>()
+                .Navigation(grade => grade.Subject)
+                .AutoInclude();
         }
     }
 }

@@ -43,5 +43,8 @@ namespace SchoolManager.Entities
         [ForeignKey(nameof(Subject))]
         public int SubjectId { get; set; }
         public SchoolSubject Subject { get; set; }
+
+        [NotMapped]
+        public string SubjectName => $"{Subject.Name}";
     }
 }

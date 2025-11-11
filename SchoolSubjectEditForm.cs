@@ -38,7 +38,6 @@ namespace SchoolManager
         {
             this.Text = "Upravit předmět";
             saveButton.Text = "Uložit";
-
         }
 
         private void InsertValuesIntoFrom()

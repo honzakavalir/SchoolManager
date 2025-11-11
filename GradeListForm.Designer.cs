@@ -58,15 +58,18 @@
             editGradeToolStripMenuItem.Name = "editGradeToolStripMenuItem";
             editGradeToolStripMenuItem.Size = new Size(102, 20);
             editGradeToolStripMenuItem.Text = "Upravit známku";
+            editGradeToolStripMenuItem.Click += editGradeToolStripMenuItem_Click;
             // 
             // deleteGradeToolStripMenuItem
             // 
             deleteGradeToolStripMenuItem.Name = "deleteGradeToolStripMenuItem";
             deleteGradeToolStripMenuItem.Size = new Size(102, 20);
             deleteGradeToolStripMenuItem.Text = "Smazat známku";
+            deleteGradeToolStripMenuItem.Click += deleteGradeToolStripMenuItem_Click;
             // 
             // gradesDataGridView
             // 
+            gradesDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gradesDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gradesDataGridView.Dock = DockStyle.Fill;
             gradesDataGridView.Location = new Point(0, 24);
