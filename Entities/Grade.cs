@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace SchoolManager.Entities
 {
+    /// <summary>
+    /// Reprezentuje známku studenta v určitém předmětu
+    /// </summary>
     public class Grade : IEntity
     {
         public Grade() {}
@@ -26,22 +29,49 @@ namespace SchoolManager.Entities
             Subject = subject;
         }
 
+        /// <summary>
+        /// Primární klíč
+        /// </summary>
         [Key]
         public int Id { get; set; }
 
+        /// <summary>
+        /// Hodnota známky
+        /// </summary>
         [Required]
         public required int Value { get; set; }
 
+        /// <summary>
+        /// Datum zapsání
+        /// </summary>
         [Required]
         public required DateTime Date { get; set; }
+
+        /// <summary>
+        /// Nepovinná poznámka
+        /// </summary>
         public string? Note { get; set; }
 
+        /// <summary>
+        /// Cizí klíč – ID studenta, kterému známka patří
+        /// </summary>
         [ForeignKey(nameof(Student))]
         public int StudentId { get; set; }
+
+        /// <summary>
+        /// Navigační vlastnost na studenta
+        /// </summary>
         public Student Student { get; set; }
 
+        /// <summary>
+        /// Cizí klíč – ID předmětu, z něhož známka pochází
+        /// </summary>
         [ForeignKey(nameof(Subject))]
         public int SubjectId { get; set; }
+
+        /// <summary>
+        /// Navigační vlastnost na předmět
+        /// </summary>
         public SchoolSubject Subject { get; set; }
 
         [NotMapped]

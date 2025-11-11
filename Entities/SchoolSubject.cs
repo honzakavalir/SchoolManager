@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace SchoolManager.Entities
 {
+    /// <summary>
+    /// Reprezentuje školní předmět, ze kterého mohou studenti získávat známky
+    /// </summary>
     public class SchoolSubject : IEntity
     {
         public SchoolSubject() {}
@@ -22,17 +25,32 @@ namespace SchoolManager.Entities
             Description = description;
         }
 
+        /// <summary>
+        /// Primární klíč
+        /// </summary>
         [Key]
         public int Id { get; set; }
 
+        /// <summary>
+        /// Název předmětu
+        /// </summary>
         [Required]
         public required string Name { get; set; }
 
+        /// <summary>
+        /// Zkratka předmětu
+        /// </summary>
         [Required]
         public required string Abbr { get; set; }
 
+        /// <summary>
+        /// Nepovinný popis
+        /// </summary>
         public string? Description { get; set; }
 
+        /// <summary>
+        /// Seznam známek patřících k tomuto předmětu
+        /// </summary>
         public List<Grade> Grades { get; set; } = new List<Grade>();
 
         [NotMapped]

@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace SchoolManager.Entities
 {
+    /// <summary>
+    /// Reprezentuje studenta školy
+    /// </summary>
     public class Student : IEntity
     {
         public Student() {}
@@ -22,15 +25,27 @@ namespace SchoolManager.Entities
             BirthDate = birthDate;
         }
 
+        /// <summary>
+        /// Primární klíč
+        /// </summary>
         [Key]
         public int Id { get; set; }
 
+        /// <summary>
+        /// Jméno studenta
+        /// </summary>
         [Required]
         public required string FirstName { get; set; }
 
+        /// <summary>
+        /// Příjmení studenta
+        /// </summary>
         [Required]
         public required string LastName { get; set; }
 
+        /// <summary>
+        /// Datum narození
+        /// </summary>
         [Required]
         public required DateTime BirthDate { get; set; }
 
@@ -52,7 +67,9 @@ namespace SchoolManager.Entities
         [NotMapped]
         public int? LastGradeValue => LastGrade?.Value;
 
-
+        /// <summary>
+        /// Seznam známek studenta
+        /// </summary>
         public List<Grade> Grades { get; set; } = new List<Grade>();
 
     }

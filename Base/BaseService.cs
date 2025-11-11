@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace SchoolManager.Base
 {
+    /// <summary>
+    /// Základní generická služba pro CRUD operace nad entitami
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class BaseService<T> : IService<T> where T : class, IEntity
     {
         protected readonly AppDbContext _context;
@@ -20,16 +24,25 @@ namespace SchoolManager.Base
             _dbSet = context.Set<T>();
         }
 
+        /// <summary>
+        /// Vrátí všechny entity daného typu
+        /// </summary>
         public virtual async Task<List<T>> FindAll()
         {
             return await _dbSet.ToListAsync();
         }
 
+        /// <summary>
+        /// Najde entitu podle ID
+        /// </summary>
         public virtual async Task<T?> FindOne(int id)
         {
             return await _dbSet.FirstOrDefaultAsync(entity => entity.Id == id);
         }
 
+        /// <summary>
+        /// Vytvoří novou entitu
+        /// </summary>
         public virtual async Task<T> Create(T entity)
         {
             _dbSet.Add(entity);
@@ -37,6 +50,9 @@ namespace SchoolManager.Base
             return entity;
         }
 
+        /// <summary>
+        /// Upraví entitu podle ID
+        /// </summary>
         public virtual async Task<T?> Update(int id, T entity)
         {
             var entityToUpdate = await FindOne(id);
@@ -50,6 +66,9 @@ namespace SchoolManager.Base
             return entityToUpdate;
         }
 
+        /// <summary>
+        /// Smaže entitu podle ID
+        /// </summary>
         public virtual async Task<bool> Delete(int id)
         {
             var entityToDelete = await FindOne(id);
