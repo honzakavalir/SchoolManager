@@ -33,6 +33,9 @@ namespace SchoolManager
             SetupDataGrid();
         }
 
+        /// <summary>
+        /// Nastaví DataGridView pro zobrazení známek.
+        /// </summary>
         private async void SetupDataGrid()
         {
             await LoadGrades();
@@ -67,12 +70,18 @@ namespace SchoolManager
             });
         }
 
+        /// <summary>
+        /// Načte známky studenta z databáze
+        /// </summary>
         private async Task LoadGrades()
         {
             _grades = await _gradeService.FindByStudent(_student.Id);
             gradesDataGridView.DataSource = _grades;
         }
 
+        /// <summary>
+        /// Přidání známky
+        /// </summary>
         private async Task AddGrade()
         {
             GradeEditForm form = new GradeEditForm(_dbContext, _student);
@@ -80,6 +89,9 @@ namespace SchoolManager
             await LoadGrades();
         }
 
+        /// <summary>
+        /// Upravení známky
+        /// </summary>
         private async Task EditGrade()
         {
             if (gradesDataGridView.CurrentRow == null)
@@ -95,6 +107,9 @@ namespace SchoolManager
             await LoadGrades();
         }
 
+        /// <summary>
+        /// Smazání známky
+        /// </summary>
         private async Task DeleteGrade()
         {
             if (gradesDataGridView.CurrentRow == null)

@@ -34,12 +34,18 @@ namespace SchoolManager
             }
         }
 
+        /// <summary>
+        /// Přepne formulář do režimu úprav
+        /// </summary>
         private void EnableEditMode()
         {
             this.Text = "Upravit předmět";
             saveButton.Text = "Uložit";
         }
 
+        /// <summary>
+        /// Vloží hodnoty předmětu do formuláře
+        /// </summary>
         private void InsertValuesIntoFrom()
         {
             nameTextBox.Text = _schoolSubject!.Name;
@@ -47,6 +53,9 @@ namespace SchoolManager
             descriptionTextBox.Text = _schoolSubject!.Description;
         }
 
+        /// <summary>
+        /// Uložení předmětu
+        /// </summary>
         private async void SaveSchoolSubject()
         {
             try

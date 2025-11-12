@@ -32,6 +32,9 @@ namespace SchoolManager
             SetupDataGrid();
         }
 
+        /// <summary>
+        /// Nastavení data gridu pro zobrazení studentů
+        /// </summary>
         private void SetupDataGrid()
         {
             studentsDataGridView.AutoGenerateColumns = false;
@@ -76,12 +79,18 @@ namespace SchoolManager
             });
         }
 
+        /// <summary>
+        /// Načtení studentů
+        /// </summary>
         private async Task LoadStudents()
         {
             _students = await _studentService.FindAll();
             studentsDataGridView.DataSource = _students;
         }
 
+        /// <summary>
+        /// Přidání studenta
+        /// </summary>
         private async Task AddStudent()
         {
             StudentEditForm form = new StudentEditForm(_dbContext);
@@ -89,6 +98,9 @@ namespace SchoolManager
             await LoadStudents();
         }
 
+        /// <summary>
+        /// Úprava studenta
+        /// </summary>
         private async Task EditStudent()
         {
             if (studentsDataGridView.CurrentRow == null)
@@ -104,6 +116,9 @@ namespace SchoolManager
             await LoadStudents();
         }
 
+        /// <summary>
+        /// Smazání studenta
+        /// </summary>
         private async Task DeleteStudent()
         {
             if (studentsDataGridView.CurrentRow == null)
@@ -142,6 +157,9 @@ namespace SchoolManager
             }
         }
 
+        /// <summary>
+        /// Otevření seznamu předmětů
+        /// </summary>
         private async Task OpenSubjectList()
         {
             SchoolSubjectListForm form = new SchoolSubjectListForm(_dbContext);
@@ -149,6 +167,9 @@ namespace SchoolManager
             await LoadStudents();
         }
 
+        /// <summary>
+        /// Otevření seznamu známek vybraného studenta
+        /// </summary>
         private async Task OpenGradeList()
         {
             if (studentsDataGridView.CurrentRow == null)

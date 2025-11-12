@@ -29,6 +29,9 @@ namespace SchoolManager
             SetupDataGrid();
         }
 
+        /// <summary>
+        /// Nastavení DataGridView pro zobrazení předmětů
+        /// </summary>
         private void SetupDataGrid()
         {
             schoolSubjectsDataGridView.AutoGenerateColumns = false;
@@ -66,12 +69,18 @@ namespace SchoolManager
             });
         }
 
+        /// <summary>
+        /// Načtení předmětů
+        /// </summary>
         private async Task LoadSchoolSubjects()
         {
             _schoolSubjects = await _schoolSubjectService.FindAll();
             schoolSubjectsDataGridView.DataSource = _schoolSubjects;
         }
 
+        /// <summary>
+        /// Přidání předmětu
+        /// </summary>
         private async Task AddSchoolSubject()
         {
             SchoolSubjectEditForm form = new SchoolSubjectEditForm(_dbContext);
@@ -79,6 +88,9 @@ namespace SchoolManager
             await LoadSchoolSubjects();
         }
 
+        /// <summary>
+        /// Úprava předmětu
+        /// </summary>
         private async Task EditSchoolSubject()
         {
             if (schoolSubjectsDataGridView.CurrentRow == null)
@@ -94,6 +106,9 @@ namespace SchoolManager
             await LoadSchoolSubjects();
         }
 
+        /// <summary>
+        /// Smazání předmětu
+        /// </summary>
         private async Task DeleteSchoolSubject()
         {
             if (schoolSubjectsDataGridView.CurrentRow == null)

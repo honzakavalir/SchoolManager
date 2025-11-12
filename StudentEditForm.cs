@@ -34,6 +34,9 @@ namespace SchoolManager
             }
         }
 
+        /// <summary>
+        /// Přepnutí formuláře do režimu úprav
+        /// </summary>
         private void EnableEditMode()
         {
             this.Text = "Upravit studenta";
@@ -41,6 +44,9 @@ namespace SchoolManager
 
         }
 
+        /// <summary>
+        /// Vložení hodnot studenta do formuláře
+        /// </summary>
         private void InsertValuesIntoFrom()
         {
             firstNameTextBox.Text = _student!.FirstName;
@@ -48,6 +54,9 @@ namespace SchoolManager
             birthDateDateTimePicker.Value = _student!.BirthDate;
         }
 
+        /// <summary>
+        /// Uložení studenta
+        /// </summary>
         private async void SaveStudent()
         {
             try

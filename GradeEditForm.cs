@@ -49,6 +49,9 @@ namespace SchoolManager
             }
         }
 
+        /// <summary>
+        /// Vloží hodnoty do formuláře pro úpravu známky
+        /// </summary>
         private void InsertValuesIntoFrom()
         {
             gradeComboBox.SelectedValue = _grade!.Value;
@@ -56,12 +59,18 @@ namespace SchoolManager
             noteTextBox.Text = _grade!.Note;
         }
 
+        /// <summary>
+        /// Přepne formulář do režimu úpravy známky
+        /// </summary>
         private void EnableEditMode()
         {
             this.Text = "Upravit známku";
             saveButton.Text = "Uložit";
         }
 
+        /// <summary>
+        /// Nastaví hodnoty pro výběr známky v ComboBoxu
+        /// </summary>
         private void SetupGradeCombobox()
         {
             gradeComboBox.DataSource = AppConstantService.GetGrades();
@@ -70,6 +79,9 @@ namespace SchoolManager
             gradeComboBox.SelectedValue = 1;
         }
 
+        /// <summary>
+        /// Nastaví hodnoty pro výběr předmětu v ComboBoxu
+        /// </summary>
         private async void SetupSchoolSubjectCombobox()
         {
             await LoadSchoolSubjects();
@@ -78,6 +90,9 @@ namespace SchoolManager
             schoolSubjectComboBox.ValueMember = "Id";
         }
 
+        /// <summary>
+        /// Uložení známky
+        /// </summary>
         private async Task SaveGrade()
         {
             int subjectId = (int)schoolSubjectComboBox.SelectedValue;
@@ -111,6 +126,10 @@ namespace SchoolManager
             Close();
         }
 
+        /// <summary>
+        /// Načte seznam předmětů
+        /// </summary>
+        /// <returns></returns>
         private async Task LoadSchoolSubjects()
         {
             _schoolSubjects = await _schoolSubjectService.FindAll();
