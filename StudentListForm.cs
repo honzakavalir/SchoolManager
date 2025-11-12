@@ -19,6 +19,7 @@ namespace SchoolManager
     public partial class StudentListForm : Form
     {
         private StudentService _studentService;
+        private SchoolSubjectService _schoolSubjectService;
         private AppDbContext _dbContext;
         private List<Student> _students;
 
@@ -26,6 +27,7 @@ namespace SchoolManager
         {
             _dbContext = dbContext;
             _studentService = new StudentService(_dbContext);
+            _schoolSubjectService = new SchoolSubjectService(_dbContext);
             _students = new List<Student>();
 
             InitializeComponent();
@@ -175,6 +177,15 @@ namespace SchoolManager
             if (studentsDataGridView.CurrentRow == null)
             {
                 MessageBox.Show("Vyberte nejprve studenta.", "Chyba",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            List<SchoolSubject> subjects = await _schoolSubjectService.FindAll();
+
+            if (subjects.Count == 0) 
+            {
+                MessageBox.Show("Nejdříve je potřeba přidat předměty.", "Chyba",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
